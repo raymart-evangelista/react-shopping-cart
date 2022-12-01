@@ -8,11 +8,11 @@ const Browse = () => {
   useEffect(() => {
     console.log('useEffect')
 
-    const { REACT_APP_GIPHY_KEY } = process.env
-    console.log(REACT_APP_GIPHY_KEY)
+    // const { REACT_APP_GIPHY_KEY } = process.env
+    // console.log(REACT_APP_GIPHY_KEY)
     
     const getGIPHY = async () => {
-      const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${REACT_APP_GIPHY_KEY}&s=corgi`, { mode: 'cors' })
+      const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${GIPHY_KEY}&s=corgi`, { mode: 'cors' })
       const corgiData = await response.json()
       const src = corgiData.data.images.original.url
       setCorgiImage(src)
