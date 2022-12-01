@@ -32,32 +32,17 @@ const Browse = () => {
     // getGIPHY()
 
     async function fetchGiphy() {
-      // const url = `/.netlify/functions/getGif?search=${search}`
-      // try {
-      //   setLoading(true)
-      //   const gif = await fetch(url).then((response => response.json()))
-      //   const src = gif.data.images.original.url
-      //   setGiphy(src)
-      // } catch (err) {
-      //   console.log(err)
-      // } finally {
-      //   setLoading(false)
-      // }
-
-      const API_call = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${process.env.GIPHY_SECRET}&s=${search}`)
-      if (API_call.ok || API_call.ok === false) {
+      const url = `/.netlify/functions/getGif?search=${search}`
+      try {
+        setLoading(true)
+        const gif = await fetch(url).then((response => response.json()))
+        const src = gif.data.images.original.url
+        setGiphy(src)
+      } catch (err) {
+        console.log(err)
+      } finally {
         setLoading(false)
-        console.log("That didn't work")
-        return
       }
-
-      setLoading(true)
-      const API_response = await API_call.json()
-
-      const src = API_response.data.images.original.url
-      setGiphy(src)
-      setLoading(false)
-
     }
 
     fetchGiphy()
