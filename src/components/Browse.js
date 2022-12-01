@@ -32,12 +32,50 @@ const Browse = () => {
     // getGIPHY()
 
     async function fetchGiphy() {
-      const url = `/.netlify/functions/getGif?search=${search}`
+      // const url = `/.netlify/functions/getGif?search=${search}`
+      // try {
+      //   setLoading(true)
+      //   // const gif = await fetch(url).then((response => response.json()))
+      //   // const src = gif.data.images.original.url
+      //   // setGiphy(src)
+      //   const response = await fetch(url)
+      //   console.log(response)
+      // } catch (err) {
+      //   console.log(err)
+      // } finally {
+      //   setLoading(false)
+      // }
+
+      const API_ROOT = 'https://api.giphy.com'
+
+      // exports.handler = async (event, context) => {
+      //   try {
+      //     const accessKey = process.env.GIPHY_SECRET
+      //     const endpoint = `${API_ROOT}/v1/gifs/translate?api_key=${accessKey}&s=${search}`
+      //     const response = await fetch(endpoint)
+      //     const data = await response.json()
+      //     return {
+      //       statusCode: 200,
+      //       body: JSON.stringify({ data })
+      //     }
+      //   } catch (error) {
+      //     console.log(error)
+      //     return {
+      //       statusCode: 500,
+      //       body: JSON.stringify({ error: 'Failed fetching' })
+      //     }
+      //   }
+      // }
+
       try {
         setLoading(true)
-        const gif = await fetch(url).then((response => response.json()))
-        const src = gif.data.images.original.url
-        setGiphy(src)
+        const accessKey = process.env.REACT_APP_GIPHY_SECRET
+        const endpoint = `${API_ROOT}/v1/gifs/translate?api_key=${accessKey}&s=${search}`
+        const response = await fetch(endpoint)
+        const searchedData = await response.json()
+        // setGiphy(src)
+        // console.log(response)
+        setGiphy(searchedData.data.images.original.url)
       } catch (err) {
         console.log(err)
       } finally {
@@ -46,6 +84,7 @@ const Browse = () => {
     }
 
     fetchGiphy()
+    // console.log(output)
 
     return () => {
       console.log('cleanup--when component unmounts')
