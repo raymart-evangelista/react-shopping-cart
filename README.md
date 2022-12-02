@@ -14,3 +14,5 @@
       - adding `netlify.toml` and renaming the `netlify` folder to `.netlify`
       - by following the tutorials step by step, I was able to build up my knowledge and get my APIs working properly with the serverless functions
       - it seems that most of the local errors had to do with syntax such as using `/.netlify/functions` instead of `./netlify/functions` and running the local server on `localhost:8888` and not `localhost:3000`
+
+- third party API calling using serverless functions is not working.. trying to fetch/axios into `/.netlify/functions` isn't working properly 

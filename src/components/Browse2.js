@@ -23,10 +23,11 @@ const Browse2 = () => {
     async function fetchGiphy() {
       try {
         setLoading(true)
-        const results = await fetch(`/.netlify/functions/gif-get?search=${search}`, { mode: 'cors' })
+        // const results = await axios.get(`/.netlify/functions/gif-get?search=${search}`)
+        const results = await axios.get(`/.netlify/functions/helloWorld`)
         console.log(results)
-        const srcUrl = results.data.data.images.original.url
-        setGiphy(srcUrl)
+        // const srcUrl = results.data.data.images.original.url
+        // setGiphy(srcUrl)
       } catch (error) {
         console.log(error)
       } finally {
