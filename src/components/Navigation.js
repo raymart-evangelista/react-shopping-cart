@@ -10,8 +10,11 @@ const Navigation = () => {
         <li>
           <Link to="/browse">Browse</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/browse2">Browse2</Link>
+        </li> */}
+        <li>
+          <Link to="/catalog">Catalog</Link>
         </li>
       </ul>
     </nav>

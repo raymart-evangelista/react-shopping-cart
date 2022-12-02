@@ -4,6 +4,7 @@ import Home from "./Home"
 import Browse from "./Browse"
 import Browse2 from "./Browse2";
 import Navigation from "./Navigation";
+import Catalog from "./Catalog"
 
 const RouteSwitch = () => {
   return (
@@ -12,7 +13,8 @@ const RouteSwitch = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
-        <Route path="/browse2" element={<Browse2 />} />
+        <Route path="/catalog" element={<Catalog />} />
+        {/* <Route path="/browse2" element={<Browse2 />} /> */}
       </Routes>
     </BrowserRouter>
   )

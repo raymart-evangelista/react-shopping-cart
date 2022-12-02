@@ -6,12 +6,10 @@ exports.handler = async function(event, context) {
 
   try {
     const response = await axios.get(targetURL)
-    const buff = await response.arrayBuffer()
-    const decode = await new TextDecoder("utf-16le").decode(buff)
 
     return {
       statusCode: 200,
-      body: JSON.stringify(decode.data),
+      body: JSON.stringify(response.data),
     }
   } catch(error) {
     return {
