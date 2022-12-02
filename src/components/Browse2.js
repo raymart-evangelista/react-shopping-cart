@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
-const Browse = () => {
+const Browse2 = () => {
 
-  const [search, setSearch] = useState('corgi')
+  const [search, setSearch] = useState('Rimworld')
   const [giphy, setGiphy] = useState(null)
   const [loading, setLoading] = useState(false)
   const [input, setInput] = useState('corgi')
@@ -20,16 +21,13 @@ const Browse = () => {
     console.log('useEffect')
 
     async function fetchGiphy() {
-      const API_ROOT = 'https://api.giphy.com'
       try {
         setLoading(true)
-        const accessKey = process.env.REACT_APP_GIPHY_SECRET
-        const endpoint = `${API_ROOT}/v1/gifs/translate?api_key=${accessKey}&s=${search}`
-        const response = await fetch(endpoint)
-        const searchedData = await response.json()
-        setGiphy(searchedData.data.images.original.url)
-      } catch (err) {
-        console.log(err)
+        const results = await axios.get(`/.netlify/functions/gif-get?search=${search}`)
+        const srcUrl = results.data.data.images.original.url
+        setGiphy(srcUrl)
+      } catch (error) {
+        console.log(error)
       } finally {
         setLoading(false)
       }
@@ -44,19 +42,19 @@ const Browse = () => {
 
   return (
     <div>
-      <h1>Browse</h1>
+      <h1>Browse2</h1>
       <h1>All Games</h1>
       <h1>6785 items</h1>
       <h1>
         <Link to='/game/1'>
-          Call of Duty: Modern Warfare II
+          RimWorld
         </Link>
       </h1>
       <input onChange={updateInput} type="text" />
       <button onClick={getSearch}>Get a gif of something you searched</button>
-      <p>{loading ? "Loading..." : <img src={giphy} alt="Corgi"/>}</p>
+      <p>{loading ? "Loading..." : <img src={giphy} alt={search}/>}</p>
     </div>
   )
 }
 
-export default Browse
+export default Browse2
