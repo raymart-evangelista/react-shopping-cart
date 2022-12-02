@@ -24,6 +24,7 @@ const Browse2 = () => {
       try {
         setLoading(true)
         const results = await axios.get(`/.netlify/functions/gif-get?search=${search}`)
+        console.log(results)
         const srcUrl = results.data.data.images.original.url
         setGiphy(srcUrl)
       } catch (error) {
