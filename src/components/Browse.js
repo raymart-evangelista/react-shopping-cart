@@ -29,7 +29,7 @@ const Browse = () => {
         const searchedData = await response.json()
         setGiphy(searchedData.data.images.original.url)
       } catch (err) {
-        console.log(err)
+        console.log(`An error occurred: ${err}`)
       } finally {
         setLoading(false)
       }

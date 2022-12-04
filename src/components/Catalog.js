@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const Catalog = () => {
 
   const [loading, setLoading] = useState(false)
-  const [game, setGame] = useState(null)
+  const [gameSrc, setGameSrc] = useState(null)
 
   useEffect(() => {
     console.log('[Catalog] useEffect')
@@ -21,8 +21,7 @@ const Catalog = () => {
         const response = await fetch(endpoint)
         const searchedData = await response.json()
         console.log(searchedData.results)
-        setGame(searchedData.results[0])
-        console.log(game.background_image)
+        setGameSrc(searchedData.results[0].background_image)
       } catch (err) {
         console.log(`An error occurred: ${err}`)
       } finally {
@@ -40,7 +39,7 @@ const Catalog = () => {
   return (
     <div>
       <h1>This is catalog!</h1>
-      <p>{loading ? "Loading..." : <img src={game.background_image} alt="image"/>}</p>
+      <p>{loading ? "Loading..." : <img src={gameSrc} alt="image"/>}</p>
     </div>
   )
 }
