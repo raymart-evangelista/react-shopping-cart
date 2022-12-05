@@ -74,7 +74,7 @@ const Catalog = () => {
       {/* {gameInfo && <ItemCard game={gameInfo}></ItemCard>} */}
       <div className="item-container">
         {!loading && games.map((game) =>
-          <NavLink to={`${uniqid()}`}>
+          <NavLink to={`${uniqid()}`} state={game}>
             <ItemCard key={uniqid()} itemId={uniqid()} game={game} handleClick={handleItemClick} />
           </NavLink>
         )}
