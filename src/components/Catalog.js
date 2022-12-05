@@ -55,6 +55,11 @@ const Catalog = () => {
     
   // }
 
+  const handleItemClick = (itemId, game) => {
+    console.log(itemId)
+    console.log(game)
+  }
+
   useEffect(() => {
     // fetchGames().then(createItemCards()).then(setDone(true))
     fetchGames()
@@ -63,8 +68,6 @@ const Catalog = () => {
     // }
   }, [])
 
-
-
   return (
     <div>
       <p>{loading ? "Loading..." : 'not loading...'}</p>
@@ -72,7 +75,7 @@ const Catalog = () => {
       {/* {gameInfo && <ItemCard game={gameInfo}></ItemCard>} */}
       <div className="item-container">
         {!loading && games.map((game) =>
-          <ItemCard key={uniqid()} game={game} />
+          <ItemCard key={uniqid()} itemId={uniqid()} game={game} handleClick={handleItemClick} />
         )}
         {/* <p>{loading ? "Loading..." : {itemCards}}</p> */}
       </div>
