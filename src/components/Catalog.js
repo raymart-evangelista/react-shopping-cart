@@ -11,7 +11,8 @@ const Catalog = () => {
   const [gameSrc, setGameSrc] = useState(null)
   const [gameInfo, setGameInfo] = useState(null)
   const [games, setGames] = useState([])
-  const [itemCards, setItemCards] = useState(null)
+  // const [itemCards, setItemCards] = useState([])
+  // const [done, setDone] = useState(false)
 
   async function fetchGames() {
     console.log(`fetching games...`)
@@ -44,17 +45,19 @@ const Catalog = () => {
     }
   }
 
-  function createItemCards() {
-    console.log('creating item cards...')
-    const listItems = (games.map((game) =>
-      <ItemCard key={uniqid()} game={game} />
-    ))
+  // function createItemCards() {
+  //   console.log('creating item cards...')
+  //   const listItems = (games.map((game) =>
+  //     <ItemCard key={uniqid()} game={game} />
+  //   ))
 
-    setItemCards(listItems)
-  }
+    // setItemCards(listItems)
+    
+  // }
 
   useEffect(() => {
-    fetchGames().then(createItemCards())
+    // fetchGames().then(createItemCards()).then(setDone(true))
+    fetchGames()
     // return () => {
     //   console.log('cleanup--when component unmounts')
     // }
@@ -64,13 +67,16 @@ const Catalog = () => {
 
   return (
     <div>
-      {/* <p>{loading ? "Loading..." : <img src={gameSrc} alt="image"/>}</p> */}
+      <p>{loading ? "Loading..." : 'not loading...'}</p>
       {/* {!loading && listItems} */}
       {/* {gameInfo && <ItemCard game={gameInfo}></ItemCard>} */}
       <div className="item-container">
-        {!loading && itemCards}
+        {!loading && games.map((game) =>
+          <ItemCard key={uniqid()} game={game} />
+        )}
         {/* <p>{loading ? "Loading..." : {itemCards}}</p> */}
       </div>
+      
     </div>
   )
 }
