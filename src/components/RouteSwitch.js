@@ -5,6 +5,8 @@ import Browse from "./Browse"
 import Browse2 from "./Browse2";
 import Navigation from "./Navigation";
 import Catalog from "./Catalog"
+import Item from "./Item"
+import NotFound from "./NotFound"
 
 const RouteSwitch = () => {
   return (
@@ -14,7 +16,9 @@ const RouteSwitch = () => {
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/catalog/:id" element={<Item />} />
         {/* <Route path="/browse2" element={<Browse2 />} /> */}
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   )

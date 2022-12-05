@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import ItemCard from "./ItemCard"
 import "./Catalog.css"
 import uniqid from "uniqid"
-// import fs from 'fs'
 
 const Catalog = () => {
 
@@ -75,7 +74,9 @@ const Catalog = () => {
       {/* {gameInfo && <ItemCard game={gameInfo}></ItemCard>} */}
       <div className="item-container">
         {!loading && games.map((game) =>
-          <ItemCard key={uniqid()} itemId={uniqid()} game={game} handleClick={handleItemClick} />
+          <NavLink to={`${uniqid()}`}>
+            <ItemCard key={uniqid()} itemId={uniqid()} game={game} handleClick={handleItemClick} />
+          </NavLink>
         )}
         {/* <p>{loading ? "Loading..." : {itemCards}}</p> */}
       </div>
