@@ -59,7 +59,7 @@ const Catalog = () => {
     return () => {
       console.log('cleanup--when component unmounts')
     }
-  }, [])
+  })
 
 
 
