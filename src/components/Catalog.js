@@ -27,6 +27,8 @@ const Catalog = () => {
         const endpoint = `${API_ROOT}/games?key=${accessKey}&platforms=187&page_size=40&ordering=-metacritic`
         const response = await fetch(endpoint)
         const searchedData = await response.json()
+
+        console.log(searchedData)
         
         // fs.writeFile('./api/games.txt', JSON.stringify(searchedData), function(err) {
         //   if(err) {
