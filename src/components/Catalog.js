@@ -7,11 +7,8 @@ import uniqid from "uniqid"
 const Catalog = () => {
 
   const [loading, setLoading] = useState(false)
-  const [gameSrc, setGameSrc] = useState(null)
-  const [gameInfo, setGameInfo] = useState(null)
   const [games, setGames] = useState([])
-  // const [itemCards, setItemCards] = useState([])
-  // const [done, setDone] = useState(false)
+  const prices = [69.99, 29.99, 49.99, 89.99, 59.99, 99.99]
 
   async function fetchGames() {
     console.log(`fetching games...`)
@@ -25,10 +22,7 @@ const Catalog = () => {
       // PS5 platform id=187
       const endpoint = `${API_ROOT}/games?key=${accessKey}&platforms=187&page_size=40&ordering=-metacritic`
       const response = await fetch(endpoint)
-      const searchedData = await response.json()
-
-      console.log(searchedData)
-      
+      const searchedData = await response.json()      
       // fs.writeFile('./api/games.txt', JSON.stringify(searchedData), function(err) {
       //   if(err) {
       //     return console.log(err)
@@ -36,7 +30,8 @@ const Catalog = () => {
       //   console.log("The file was saved")
       // })
 
-      setGames(searchedData.results)
+      const pricedGames = setPrices(searchedData.results)
+      setGames(pricedGames)
     } catch (err) {
       console.log(`An error occurred: ${err}`)
     } finally {
@@ -55,13 +50,32 @@ const Catalog = () => {
   // }
 
   const handleItemClick = (itemId, game) => {
-    console.log(itemId)
-    console.log(game)
+  }
+
+  const setPrices = (games) => {
+    // const example = [{slug: 'persona'}, {slug: 'ersonal'}]
+    // console.log(games)
+    // console.log(example)
+    // const new_example = example.map(each => ({
+    //   ...each,
+    //   price: prices[Math.floor(Math.random() * prices.length)]
+    // }))
+
+    // console.log(new_example)
+    const pricedGames = games.map(game => ({
+      ...game,
+      price: prices[Math.floor(Math.random() * prices.length)]
+    }))
+
+    return pricedGames
+    // console.log(pricedGames)
+    // setGames(pricedGames)
   }
 
   useEffect(() => {
     // fetchGames().then(createItemCards()).then(setDone(true))
     fetchGames()
+    console.log(games)
     // return () => {
     //   console.log('cleanup--when component unmounts')
     // }
