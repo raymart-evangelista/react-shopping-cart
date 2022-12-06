@@ -9,6 +9,13 @@ import Item from "./Item"
 import NotFound from "./NotFound"
 
 const RouteSwitch = () => {
+
+  const handleAdd = (gameName, gamePrice, gameId) => {
+    console.log(gameName)
+    console.log(gamePrice)
+    console.log(gameId)
+  }
+
   return (
     <BrowserRouter>
       <Navigation />
@@ -16,7 +23,7 @@ const RouteSwitch = () => {
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/catalog/:id" element={<Item />} />
+        <Route path="/catalog/:id" element={<Item handleAddToCart={handleAdd} />} />
         {/* <Route path="/browse2" element={<Browse2 />} /> */}
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

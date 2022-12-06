@@ -2,7 +2,7 @@ import { useParams, useLocation } from "react-router-dom"
 import { useState } from "react"
 import "./Item.css"
 
-const Item = () => {
+const Item = ({handleAddToCart}) => {
   // const [price, setPrice] = useState(prices[Math.floor(Math.random() * prices.length)])
   const { id } = useParams()
   const location = useLocation()
@@ -12,8 +12,6 @@ const Item = () => {
   const engTags = tags.filter((tag) => {
     return tag.language === 'eng'
   })
-
-  console.log(engTags)
   return (
     <div className="main">
       <div className="item-image-container">
@@ -30,7 +28,7 @@ const Item = () => {
           )}
         </div>
         <h1>${gameData.price}</h1>
-        <button>Add to cart</button>
+        <button onClick={() => handleAddToCart(gameData.name, gameData.price, gameData.id)}>Add to cart</button>
       </div>
     </div>
   )

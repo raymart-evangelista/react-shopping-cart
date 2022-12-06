@@ -64,7 +64,8 @@ const Catalog = () => {
     // console.log(new_example)
     const pricedGames = games.map(game => ({
       ...game,
-      price: prices[Math.floor(Math.random() * prices.length)]
+      // price: prices[Math.floor(Math.random() * prices.length)]
+      price: 59.99
     }))
 
     return pricedGames
