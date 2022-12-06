@@ -1,3 +1,10 @@
+### Applied skills
+- React routes
+- React hooks
+- React props
+- Handling inputs and rendering lists
+- Calling third-party APIs
+
 ### Resources
 - Storing API Keys with Create React App
   - [Community responses for storing API keys properly with CRA](https://www.reddit.com/r/reactjs/comments/p575tb/where_can_i_learn_to_properly_store_an_api_key_on/)
@@ -18,3 +25,7 @@
 - third party API calling using serverless functions is not working.. trying to fetch/axios into `/.netlify/functions/gif-get` isn't working properly
   - the data comes out in some unreadable form
   - axios into `/.netlify/functions/helloWorld` does work and the data is readable
+
+### Todo
+- style
+- test app using React Testing Library
