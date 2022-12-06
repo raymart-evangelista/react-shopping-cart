@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
+import "./Navigation.css"
 
-const Navigation = () => {
+const Navigation = ({cartCount}) => {
   return (
     <nav>
-      <ul>
+      <ul className="links">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -15,6 +16,9 @@ const Navigation = () => {
         </li> */}
         <li>
           <Link to="/catalog">Catalog</Link>
+        </li>
+        <li>
+          <Link to="/cart">Cart ({cartCount})</Link>
         </li>
       </ul>
     </nav>
