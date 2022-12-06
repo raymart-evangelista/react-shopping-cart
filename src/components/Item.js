@@ -1,10 +1,11 @@
-import { useParams, useLocation } from "react-router-dom"
+import { useParams, useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import "./Item.css"
 
 const Item = ({handleAddToCart}) => {
   // const [price, setPrice] = useState(prices[Math.floor(Math.random() * prices.length)])
   const { id } = useParams()
+  const navigate = useNavigate()
   const location = useLocation()
   const gameData = location.state
   const images = gameData.short_screenshots
@@ -28,7 +29,10 @@ const Item = ({handleAddToCart}) => {
           )}
         </div>
         <h1>${gameData.price}</h1>
-        <button onClick={() => handleAddToCart(gameData.name, gameData.price, gameData.id)}>Add to cart</button>
+        <button onClick={() => {
+          navigate('/cart')
+          handleAddToCart(gameData.name, gameData.price, gameData.id, images[0].image)}}
+        >Add to cart</button>
       </div>
     </div>
   )
