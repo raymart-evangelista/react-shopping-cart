@@ -1,3 +1,7 @@
+### Description
+- Online video game shopping website that uses [RAWG.IO API](https://api.rawg.io/docs/) for video game data, where you can view the catalog and add items to your cart.
+  - [View the website](https://raymart-evangelista-shopping-cart.netlify.app/catalog)
+
 ### Applied skills
 - React routes
 - React hooks
